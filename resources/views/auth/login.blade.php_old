@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>{{ config('app.name', 'Laravel') }}</title>
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <!-- test -->
+  <!-- Google Font -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"> -->
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('src/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}">
+  <script src="{{ asset('vendors/scripts/jQuery v3.2.1.min.js') }}"></script>
+  <script src="{{ asset('vendors/scripts/core.js') }}"></script>
+  <script src="{{ asset('vendors/scripts/script.min.js') }}"></script>
+  <script src="{{ asset('vendors/scripts/process.js') }}"></script>
+  <script src="{{ asset('vendors/scripts/layout-settings.js') }}"></script>
+  <script src="{{ asset('src/plugins/apexcharts/apexcharts.min.js') }}"></script>
+  <script src="{{ asset('src/plugins/datatables/js/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('src/plugins/datatables/js/dataTables.bootstrap4.min.js') }}"></script>
+  <script src="{{ asset('src/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
+  <script src="{{ asset('src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"> </script> -->
+  <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+     
+     gtag('config', 'UA-119386393-1');
+  </script>
+  <!-- end of test -->
+  <script>
+     $('.hidden p').click(function(){
+       $(this).closest('.select').find('.input').text($(this).text());
+       $(this).closest('.select').find('input').val($(this).attr('value'));
+       $(this).closest('.select').trigger("change");
+     });
+     
+     $('.select').change(function(){
+       alert('hover slector changed to '+$(this).find('input').val());
+     });
+  </script>
+  <style>
+     .box{
+     color: #1f2d3d;
+     padding: 20px;
+     display: none;
+     margin-top: 20px;
+     }
+     .boxx{
+     color: #1f2d3d;
+     padding: 20px;
+     margin-top: 20px;
+     display: block;
+     }
+     * {
+     font-family: arial;
+     box-sizing: border-box;
+     }
+     p {
+     margin: 0;
+     }
+     div.select {
+     min-width: 120px;
+     padding-right: 15px;
+     margin-left: 10px;
+     display: inline-block;
+     border-radius: 15px;
+     border: 1px solid #0B0000;
+     position: relative;
+     background: f8f9fa;
+     }
+     div.select p {
+     padding: 5px;
+     width: 100%;
+     color: #000;
+     }
+     div.select:after {
+     content: "▼";
+     color: #000;
+     position: absolute;
+     right: 6px;
+     top: 8px;
+     font-size: 9px;
+     }
+     div.select .hidden {
+     position: absolute;
+     visibility: hidden;
+     opacity: 0;
+     transition: .1s;
+     background: f8f9fa;
+     border: 1px solid #000;
+     border-radius: 15px;
+     z-index: 10;
+     width: 100%;
+     color: #000;
+     }
+     div.select:hover .hidden {
+     visibility: visible;
+     opacity: 1;
+     }
+     div.select p:hover, div.select:hover {
+     background: #ddd;
+     }
+  </style>
+  <!-- Google Font: Source Sans Pro -->
+  <!--  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> -->
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <!--  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="src/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="src/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="src/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="src/styles/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="src/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="src/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="src/plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
+</head>
+<body class="hold-transition layout-top-nav">
+  
+  <div class="pre-loader">
+    <div class="pre-loader-box">
+      <div class="loader-logo"><img src="imgs/alp1.svg" alt=""></div>
+      <div class='loader-progress' id="progress_div">
+        <div class='bar' id='bar1'></div>
+      </div>
+      <div class='percent' id='percent1'>0%</div>
+      <div class="loading-text">
+        Loading...
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+
+    <!-- Preloader -->
+    <!-- <div class="preloader flex-column justify-content-center align-items-center">
+      <img class="animation__shake" src="dist/img/a.png" alt="AlephTaveLogo" height="60" width="60">
+    </div> -->
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <span class="collapse-bg"></span>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Features</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pricing</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</nav> -->
+<!-- ==================  NAV  ====================-->
+    <nav class=" navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <nav class="main-header navbar navbar-expand navbar-white navbar-light"> -->
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+       
+        <li class="nav-item ">
+          <img class="animation__shake" src="imgs/alp.jpg" alt="AlephTavLogo" class="rounded" height="70" width="70">
+         <h1 class="d-none d-sm-inline-block align-middle" style="margin-bottom: 0 !important">Covid 19 CCVI   <small>Addis Ababa </small></h1>
+          
+        </li>
+       <!--  <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Contact</a>
+        </li> -->
+      </ul>
+
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#hiddeMe"
+    aria-controls="hiddeMe" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+      <!-- Right navbar links -->
+      <div class="collapse navbar-collapse" id="hiddeMe">
+      <ul class=" navbar-nav ml-auto" >
+        <li class="nav-item ">
+          <a href="/" class="nav-link"><i class="fa fa-home fa-1x"></i></a>
+        </li>
+       <!--  <li class="nav-item ">
+          <a class="nav-link" href="/risk">Personal CV</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#subcityDetail">Districts</a>
+        </li>        
+        <li class="nav-item ">
+          <a class="nav-link" href="#summery">Summery</a>
+        </li>
+ -->
+
+@guest
+
+
+        
+        <li class="nav-item d-none d-sm-inline-block">
+            <a class="nav-link"  href="/login">
+              {{ __('Login') }}
+              <i class="icon-copy dw dw-login"></i>
+            </a>
+
+        </li>
+@endguest
+@auth
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+               Welcome {{ Auth::user()->name }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            @if( Auth::user()->role == "admin")
+                <a class="dropdown-item" href="{{ route('admin.index') }}"> Admin Workplace </a>
+            @elseif( Auth::user()->role == "expert")
+                <a class="dropdown-item" href="{{ route('expert.index') }}"> Expert Workplace </a>
+            @elseif( Auth::user()->role == "encoder")
+                <a class="dropdown-item" href="{{ route('incoder.index') }}"> Encoder Workplace </a>
+            @endif
+
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                    <i class="icon-copy dw dw-logout"></i>
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
+        </li>
+@endauth
+
+        <li class="nav-item">
+          <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            <i class="fas fa-expand-arrows-alt"></i>
+          </a>
+        </li>
+      </ul>
+      </dir>
+    </nav>
+
+<!-- ================== END OF NAV  ====================-->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper" >
+    <style type="text/css">
+       .css-1pfo3xg {
+       box-sizing: border-box;
+       margin: 0px auto;
+       min-width: 0px;
+       width: 100%;
+       padding: 3.5rem 5rem;
+       background-color: #f8f6f1);
+       }
+       .css-vxkfno {
+       box-sizing: border-box;
+       min-width: 0px;
+       width: 50%;
+       max-width: 60%;
+       margin: auto;
+       }
+       .css-1v6x1ap {
+       box-sizing: border-box;
+       margin: 0px;
+       min-width: 0px;
+       padding-top: 1.5rem;
+       padding-bottom: 1.5rem;
+       }
+       .Africa-module-heroText_3B6l {
+       font-family: Botanika Mono;
+       font-style: normal;
+       font-weight: 300;
+       font-size: 18px;
+       line-height: 22px;
+       text-align: center;
+       letter-spacing: .1em;
+       }
+       .Africa-module-heroTitle_2HmZ {
+       font-family: ZapfHumnst BT;
+       font-style: normal;
+       font-weight: 400;
+       font-size: 48px;
+       line-height: 54px;
+       text-align: center;
+       }
+       .css-vurnku {
+       box-sizing: border-box;
+       margin: 0 0 10 0;
+       min-width: 0px;
+       }
+    </style>
+    <div class="row" style="background: #f8f6f1;">
+      <div class="css-vxkfno ">
+         <div class="Africa-module-heroText_3B6l css-1v6x1ap">
+            THE ETIOPIAN COVID COMMUNITY VULNERABILITY INDEX (CCVI)
+         </div>
+         <h2 class="Africa-module-heroTitle_2HmZ css-vurnku">
+            An index that assesses health, economic, and social impacts of COVID-19 in Addis Ababa
+         </h2>
+      </div>
+    </div>
+    
+
+<br>
+<br>
+<br>
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="">
+                <!-- <div class="card-header">{{ __('Login') }}</div> -->
+                @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong><i class="icon-copy fa fa-check" aria-hidden="true"></i> Success !</strong> {{ $message }}.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+            @endif
+                <div class="card-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- <div class="form-group row">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('role') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="role" type="select" class="form-control" name="role" required>
+                                    <option value="expert">Expert</option>
+                                    <option value="encoder">Encoder</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                                 <input id="role" type="role" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="current-role">
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div> 
+                        </div> -->                        
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+
+                               <!-- @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Forgot Your Password?') }}
+                                    </a>
+                                @endif-->
+                            </div>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="card-box pd-20 height-100-p mb-30">
+    <div class="row align-items-center">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <img src="vendors/images/login-page-img.png" alt="">
+        </div>
+        <div class="col-md-6">
+            <h4 class="font-20 weight-500 mb-10 text-capitalize">
+               <div class="weight-600 font-30 text-blue"> Welcome  !</div>
+            </h4>
+            <p class="font-18 ">We welcome you to our site and wisely notice that your anautorized login attempets are prohipited. avery login atempets are loged.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde hic non repellendus debitis iure, doloremque assumenda. Autem modi, corrupti, nobis ea iure fugiat, veniam non quaerat mollitia animi error corporis.</p>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+<footer class="main-footer">
+  <strong>
+    <p align="center">Copyright &copy; May.2021 <a href="#">AlephTav</a>.
+  </strong>
+  All rights reserved.
+  <div class="float-right d-none d-sm-inline-block">
+    <b>Version</b> 1.0.0
+  </div>
+  </p>
+</footer>
+<style type="text/css">
+  #myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: rgba(0,0,0,.5); /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 10px 14px 10px 14px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+</style>
+ <button onclick="topFunction()" id="myBtn" title="Go to top">Top <i class="fa fa-long-arrow-up"></i></button> 
+<script type="text/javascript">
+  //Get the button:
+mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
+</script>
+
+</body>
+</html>

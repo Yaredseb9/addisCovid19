@@ -1,0 +1,476 @@
+* home page -> discription of the platform @done ????
+* nav bar communtiy,setting,individual @done
+* all risk index (if all are high->one color{{, if deth color}}) 3 low, 3 high @done but if death color ????
+* drop down in the begining of the page above the map in the center @notclear ????
+* put graph next to the map @done 
+* change map? based on selected subcity (with woreda) @notclear ???
+* indicators above the map based on infection (change indicators) based on hospitalization (change indicators) based on mortality change color
+	* REQIRED -> selected indicators for each (infection, hospitalization,mortality) @done
+
+* next to the map graph based on the calculated risk (hos,inf,mort) change as the map @done onclick
+* protection strategy -> static-> review div -> based on calculated RI  @notclear ???
+* on graphpop up  @notclear ???
+
+
+INDIVICUAL
+
+Basic discription
+RI in tabel Overall Inf Hos Mor (row)
+col (high)
+advice table
+
+*****************************************************************
+{{=== this will change all encoder forms and ri calculation ===}}
+encoder -> subcity level  (overall subcity OR overall Woreda )
+		city -> over all by city indicator ()
+		subcity -> overall subcity or Woreda
+		woreda -> woreda level OR ketena level
+NO SUMMATION 
+*****************************************************************
+
+
+expert review X no EXPERT
+
+admin for each setting
+
+doctor -> idintifier phone number
+like seeting but for each patient
+
+setting-> assesseent 
+history on graph 3 graph on inf,hos,dea on dashhboard
+protection strategy save to db
+final to follow up ur progress plz send an emal
+
+
+
+
+
+
+
+
+
+
+{{************* FINAL CHANGES/ADDITIONS ****************** ( Well i think it is there final )}}
+ 
+ *** Home page **************************************************************************
+ 1. Map of each subicity with there woredas
+ -> they sent  some shape files
+ -> they want it like surgo (they send pic)
+ -> below hospitalization,infection and death => list indicators @all 31 ?????
+ -> Add Addis abeba in the select option and view its RI @done
+ -> indicator list (in the subcity area) list some and put view more to show more @done
+
+
+ *** Setting ****************************************************************************
+ -> make some of the indicaotrs required
+ -> add discription to some of the indicators
+ -> validation for all
+ -> proportion of individula -> calculate it from total # bla bla
+
+
+ *** For login setting *******************************************************************
+ ->display company name in login @what?????
+
+
+ *** Admin********************************************************************************
+ -> Register Settings =>in catagroy select like bar, helth center, organization bla bla 
+
+
+ *** Physcian ****************************************************************************
+ -> when diagonise a patient add card no to it so that to see the history of that person
+ -> export patient table to pdf, excel. json
+
+
+ *** Higher officials*********************************************************************
+ -> see only RI no detail @done 
+ -> graph, piechart based on RI @done
+ -> works for both community and setting and physician
+
+
+ *** Subcity admin ***********************************************************************
+ ->register encoder @done
+ ->can encode data for its subcity? @done
+
+ *** Encoder *****************************************************************************
+-> upload new form @done
+
+ *** Setting admin *********************************************************************
+ -> register physician , setting data encoder 
+
+
+ 
+
+
+
+
+
+
+
+woreda population or ketena population on ri calc cant be done?
+input of woreda or ketena must be priority (lied to inconsistency)
+main indicatours for home page
+
+
+
+
+app/Http/Controllers/adminController.php
+resources/views/admin/home.blade.php
+resources/views/inc/sidebar.blade.php
+public/vendors/styles/core.css
+public/vendors/styles/core.css
+
+public/imgs/user-add.svg
+
+
+@endsent
+
+public/vendors/styles/core.css
+public/vendors/styles/core.csslarave:
+
+app/Http/Controllers/IndicatorController.php
+resources/views/expert/home.blade.php
+resources/views/inc/sidebar.blade.php
+
+@endsent
+
+app/Http/Controllers/SubcityReviewController.php
+resources/views/expert/subcityReview.blade.php
+
+@endsent
+
+resources/views/home.blade.php
+resources/views/auth/login.blade.php
+
+public/imgs/edit-table.svg
+app/Http/Controllers/IncoderController.php
+resources/views/incoder/home.blade.php
+
+
+
+resources/views/incoder/home.blade.php
+
+@endsent
+
+resources/views/auth/login.blade.php
+resources/views/incoder/home.blade.php
+app/Http/Controllers/HomeController.php
+
+for RI To DB save
+
+app/Http/Controllers/IndicatorController.php
+app/Http/Controllers/CalculateRI.php
+app/Http/Controllers/IncoderController.php
+
+@endsent
+
+
+for home data from woreda_ri table
+
+resources/views/incoder/home.blade.php
+
+app/Http/Controllers/HomeController.php
+app/Http/Controllers/IndicatorController.php
+app/Http/Controllers/CalculateRI.php
+
+______________________________________
+                  DB 
+
+renamed wereda_ri > wereda_ri
+removed indicator_id col from wereda_ri
+add triger woreda_ir_initialization
+
+@endsent
+
+
+> more graph, big footer mobile compateblity improved lod-time improved
+
+app/Http/Controllers/HomeController.php
+resources/views/incoder/home.blade.php
+
+
+> create layout for / and /risk /login
+
+resources/views/home.blade.php
+resources/views/home.blade.php
+resources/views/inc/home_nav.blade.php----> ( it's optional )
+
+
+> layout, print, cleanup 
+
+resources/views/risk.blade.php
+public/vendors/scripts/steps-setting.js
+public/src/plugins/jquery-steps/jquery.steps.js ( 801 & 802 commeted)
+
+
+>  high govenmnet officials
+app/Http/Controllers/OfficialsController.php
+resources/views/officials/home.blade.php
+
+
+> on load color change
+resources/views/home.blade.php
+
+
+>null initialization erro fixed on data tabel 
+app/Http/Controllers/IndicatorController.php
+
+
+@endsent
+
+
+> models to work 
+
+app/Models/User.php
+
+change user.php  - class User extends Authenticatable - use some classes 
+compare user.php and user_old.php
+
+> for all dashbord layout changed to inc.layout
+	resources/views/admin/users.blade.php
+	resources/views/expert/indicator.blade.php
+
+@send
+
+> high govenmnet officials 
+> use dashbord layout
+> redirecting
+
+app/Http/Controllers/Auth/LoginController.php > added role
+
+> removed officeal route comment
+> added officeal graph
+
+resources/views/officials/home.blade.php
+
+> inc.home_nave add officeal dashbord link
+resources/views/inc/home_nav.blade.php
+
+> inc.navebar add home dashbord link
+resources/views/inc/navebar.blade.php
+
+> fixed RI calculaiton for each woreda on indicaor update
+app/Http/Controllers/IncoderController.php
+app/Http/Controllers/CalculateRI.php
+
+
+@todo
+
+
+documentation 
+after login privilage chack e.g admin
+error pages 
+	Error 401 — Unauthorised @done
+
+	Error 403 — Forbidden @done
+
+	Error 404 — Not Found @done
+
+	Error 419 — Laravel POST Error @done
+
+	Error 429 — Too Many Requests @done
+
+	Error 500 — Internal Server Error @done
+
+	Error 503 — Service Unavailable @done
+
+	php and laravel error
+
+server side validation
+session redirect not working
+
+
+ADMIN
+---------------------------------
+fix route/modal admin > add users  (2gether)
+fix edit return to dashbord @done
+confirmetion @done  for trush & delete
+mobile compateblity @done small thing
+delete from trush not good @done
+formvalidation @done for create
+
+
+
+_________________________________________
+
+app/Http/Controllers/adminController.php
+app/Http/Controllers/Auth/LoginController.php
+resources/views/inc/sidebar.blade.php
+resources/views/admin/home.blade.php
+resources/views/admin/create.blade.php
+resources/views/admin/users.blade.php
+resources/views/expert/edit.blade.php
+resources/views/inc/home_nav.blade.php
+
+DB
+models
+migrations
+
+_________________________________________
+
+
+
+EXPERT
+---------------------------------
+
+fix route  manage review subreview.store @done
+trush & delete confirmation @done
+restor for indicatur trush
+manage indicators add indicator modal need fix @done
+dashbord link need fix @done
+review tooltip allow html content @done
+when any action is made on manage indicator redirects to dashboard not correct @done
+
+
+______________________________________________
+
+resources/views/inc/sidebar.blade.php
+resources/views/expert/create.blade.php
+resources/views/expert/edit.blade.php
+resources/views/expert/home.blade.php
+resources/views/expert/show.blade.php
+resources/views/expert/indicator.blade.php
+resources/views/expert/subcityReview.blade.php
+routes/web.php
+app/Http/Controllers/SubcityReviewController.php
+
+
+______________________________________________
+
+
+ENCODER
+---------------------------------
+fix route encoder > encode data @done
+nav nav-tabs customtab for enconder tabs @done
+update all woreda ri     @done                   -------> @done need testing
+success notification for indicator update @done
+validation form number only @done
+________________________________________________
+
+
+
+________________________________________________
+
+OFFICIALS
+---------------------------------
+> ketena
+	 @done
+> setting
+	Dashbord 
+	table && graph
+> both
+	Dashbord 
+	table && graph
+
+
+SUB ADMINs
+---------------------------------
+create roles @done
+dashboard/usermange @done
+
+on dashbord tabel query need fix
+
+
+setting 
+-------------------------------------
+form  ----> in @progress
+Calculate RI
+Store 
+dashboard
+-------------------------------------
+physician
+---------------------------------
+form store ---->in @progress
+dashboard
+
+
+__________________________________________________________________________
+
+
+Priority * high 
+		** low
+** Login -> check status and email verified 
+
+Admin user registration 
+1. role => woreda hide
+	=> dash board print @done
+	=> dashboard ( add where status ==1 ) @done
+	=> dash board admin -> count sub admin @done
+	=> guest -> count office @done
+	=> footer for Dashbord 
+	=> delete img, @done 
+	=> password change form @done
+
+	=> send email (laravel or php) with password with randomliy generated  **
+	=> first time login -> change password  **
+
+	=> Server and client side validation 
+	=> nav bar side hidden show links **
+Login based on role validate
+error mssg
+
+2. Expert
+	=> search and datatabel print @done 
+	=> textarea
+	=>restore from trash (copy form admin)
+3. Encoder
+	=> done
+
+4. officials with ketena privilage
+	=>done
+5.official with healthcenter privilage
+	=>?
+
+6. officals with both
+	=> integrate botth
+
+7. setting 
+	-> copy incoders dash bord
+	=> setting and physician save retrun with advice and suggestion compact, then view it in modal with print button
+	=> view / modal sugestion
+	=> triger initializaion for setting role on registration
+
+
+8. Physican 
+	=> calculate risk
+	=> save to db
+	= view advise and suggestion
+	Layout=> delete img, footer, preloader delete
+
+
+
+
+
+
+
+
+public asset  fix
+home/addisababacovid1/public_html/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php
+
+for all forms 
+server side validation
+
+
+for all blade
+@if ($message = Session::get('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><i class="icon-copy fa fa-check" aria-hidden="true"></i> Success !</strong> {{ $message }}.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+     </div>
+@endif
+@if ($errors->any())
+    <div class="alert alert-danger  alert-dismissible fade show">
+        <strong><i class="icon-copy fa fa-cross" aria-hidden="true"></i> Whoops!</strong> There were some problems with your input.<br><br>
+        <ul class="list-group">
+            @foreach ($errors->all() as $error)
+                <li class="list-group-item list-group-item-danger">{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+    </div>
+@endif
+
+alert(JSON.stringify(test));

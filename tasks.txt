@@ -1,0 +1,137 @@
+---------------------------------------------------------------------------------------------------|
+|	Over All		| 	=> minimize the loader's timer                                             |   - will be done as we go
+|					|	=> mobile/ tablate view                                                    |   - will be done as we go
+|					|	=>                                                                         |
+|					|	=>                                                                         |
+|___________________|______________________________________________________________________________|_______________
+|					|                                                                              |
+|	Index Page		| 	=> Map color change based on the value of the indicators                   |   x no idea how to do it
+|					|	=> Chart for each subcity comparing there prespective woredas(11 charts)   |   - done (location arguable)
+|					|	=> Chart for Addis Abeba Comparing subcity (one chart)                     |   - done
+|					|	=> Big Footer                                                              |   - done
+|___________________|______________________________________________________________________________|_______________
+|					|                                                                              |	
+|					|	=> Validation                                                              |   - part done on next remind its not corrent 
+|					|	=> discription for each indicators on the form (on read more link or sth)  |   x use tool-tip
+|	Risk Calculator |	=> erase pop up js on Next                                                 |   - done
+|					|	=> Advise Based on each indicators                                         |   x 
+|					|	=> display them in Row                                                     |   - done
+|					|	=> change submit button to Print button -> action to print it out          |   - done
+|					|	=>                                                                         |
+|					|	=>                                                                         |
+|___________________|______________________________________________________________________________|_______________
+|					|	                                                                           |
+|					|	=> Add Some legal stuff on the page                                        |
+|	Login			|	=> Email validation (at the end?)                                          |
+|					|	=>                                                                         |
+|					|	=>                                                                         |
+|___________________|______________________________________________________________________________|_______________
+|					|                                                                              |
+|	Admin			|	=>Dashboard -> add Pagination to the user list table                       |
+|					|				-> Add Couter for Guest, Physician users                       |
+|					|	=>ManageUsert -> Add Trash and reload                                      |
+|					|					-> Add Phone No during register users                      |
+|					|	                                                                           |
+|___________________|______________________________________________________________________________|_______________
+|					|                                                                              |
+|	Expert			|	=> DashBaord -> Add Pagination to indicators table                         |
+|					|	=> Manage Indi -> Add Setting level indicators                             |
+|					|	=> Manage Review ->                                                        |
+|					|	=>                                                                         |
+|					|	=>                                                                         |
+|___________________|______________________________________________________________________________|_______________
+|					|	                                                                           |
+|	Encoder 		|	=>                                                                         |
+|					|	=>                                                                         |
+|					|	=>                                                                         |
+|___________________|______________________________________________________________________________|_______________
+|					|	                                                                           |
+| Physician			|	=> Fill individual indicators form , save and View                         |
+|					|	=> Dashboard                                                               |
+|					|	=>                                                                         |
+|					|	=>                                                                         |
+|___________________|______________________________________________________________________________|_______________
+|					|	                                                                           |
+|	Guest 			|	=> View Ketena's data                                                      |  - done  officias
+|					|	=>                                                                         |
+|___________________|______________________________________________________________________________|_______________
+|					|                                                                              |
+|	Setting(office)	|	=> Dashboard                                                               |
+|					|	=> Setting level indicators form                                           |
+|					|	=>                                                                         |
+|___________________|______________________________________________________________________________|______________
+|					|	                                                                           |
+|	Setting unaut	|	=> Indicaotrs form
+|					|	=> Advice and printable stuff
+|___________________|____________________________________________________________________________
+|					|	                                                                           |
+|Communitity Unaut	|	=> git like
+|					|
+|___________________|_____________________________________________________________________________
+|
+|	Documentaion
+|	Coments on code
+	USer Guid
+
+
+
+
+1.  Admin
+	*dashbard, (done) (need layout and inc\route fix)
+	*role assign,delete, mail to users  =>Desh  
+	
+	
+2. inc layout Layout-> merge all based on session
+	*layout ->navabar,sidebar if role
+	* side nav bar all
+	home, login ,personal -> 1 layout => tesfa ( can't make z layout the same conflict of JS)
+
+3. expert
+	* dashboad (need layout and inc\route fix)
+	* review (based on subcity) + 1 menu =>tesfa (after layout fix)
+	* delete (soft delete, hard delete) -> desh  2. (done)
+
+
+4. incoder
+	* dahbord (done)
+	* sort 0 values
+	* calculate RI on save/insert  => tesfa ( RI done on Save will be done) (done)    
+
+
+4. CalculatRI -> sumvalue;  =>tesfa (done)
+
+
+5. homepage
+	* prepare map-> svg  => Desh
+	* woreda level graph =>
+	* subcity level graph
+
+6. patient(setting)  =>desh
+
+
+7. clak risk
+	* visual =>tesfa (done)
+	* calculation =>desh   1.
+
+8. github
+
+
+
+
+
+=========================================================================================================================================================
+=========================================================================================================================================================
+=========================================================================================================================================================
+=========================================================================================================================================================
+
+
+map side graph for some not working
+on map hover infection is not working
+
+
+clean db 
+insert all data ketena, wereda, subcity
+check if data table is still in game
+
+
+
